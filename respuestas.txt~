@@ -1,6 +1,32 @@
+Respuestas a las preguntas:
+
+18/
 El resultado Obtenido es:
 Hello world
  => nil 
 2.0.0p247 :002 >
 
-La diferencia principal al usar el intérprete interactivo y el intérprete ruby es que con el intérprete de ruby solo nos da como salida la cadena de caracteres que introducimos en el código, sin embargo con el irb además de aparecer la cadena "Hello world" tambien apunta a una clase nula (nil) 
+21/
+La diferencia principal al usar el intérprete interactivo y el intérprete ruby es que con el intérprete de ruby solo nos da como salida la cadena de caracteres que introducimos en el código, sin embargo con el irb además de aparecer la cadena "Hello world" tambien apunta a una clase nula (nil) y nos deja el control para seguir introduciendo sentencias.
+
+26/
+El resultado arrojado por pry es el siguiente:
+
+[1] pry(main)> puts x
+10
+=> nil
+[2] pry(main)> def hello
+[2] pry(main)*   puts "Hello world"
+[2] pry(main)* end  
+=> nil
+[3] pry(main)> hello
+Hello world
+=> nil
+[4] pry(main)> byebye
+bye bye world!!!
+=> nil
+[5] pry(main)> x = "changed"
+=> "changed"
+[6] pry(main)> exit
+program resumes here. Values of x is: changed.
+
