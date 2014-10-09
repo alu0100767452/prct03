@@ -30,3 +30,19 @@ bye bye world!!!
 [6] pry(main)> exit
 program resumes here. Values of x is: changed.
 
+27/
+Las diferencias que se pueden observar entre el intérprete interactivo y el pry es que el irb va ejecutando el programa en la consola de forma interactiva. Mientras que con pry, cuando en la ejecución del programa lee la línea binding.pry (siempre y cuando tenga el "require 'pry'") da el control a la consola permitiendodepurar en tiempo de ejecucion el programa, añadiendo nuevos métodos, haciendo asignaciones, etc. Si la línea binding no se llegara a ejecutar, el programa se ejecutaría de forma normal.
+
+34/
+La diferencia entre "\t\n" y '\t\n' radica en que el "\t\n" arrojará por pantalla un tabulador y un retorno de carro si embargo el '\t\n' escribirá por pantalla la cadena: \t\n
+
+[1] pry(main)> puts '\t\n'
+\t\n
+=> nil
+[2] pry(main)> puts "\t\n"
+	
+=> nil
+[3] pry(main)> 
+
+
+

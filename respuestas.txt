@@ -7,7 +7,12 @@ Hello world
 2.0.0p247 :002 >
 
 21/
-La diferencia principal al usar el intérprete interactivo y el intérprete ruby es que con el intérprete de ruby solo nos da como salida la cadena de caracteres que introducimos en el código, sin embargo con el irb además de aparecer la cadena "Hello world" tambien apunta a una clase nula (nil) y nos deja el control para seguir introduciendo sentencias.
+La diferencia principal al usar el intérprete interactivo 
+y el intérprete ruby es que con el intérprete de ruby solo 
+nos da como salida la cadena de caracteres que introducimos 
+en el código, sin embargo con el irb además de aparecer la cadena 
+"Hello world" tambien apunta a una clase nula (nil) y nos deja 
+el control para seguir introduciendo sentencias.
 
 26/
 El resultado arrojado por pry es el siguiente:
@@ -31,5 +36,297 @@ bye bye world!!!
 program resumes here. Values of x is: changed.
 
 27/
-Las diferencias que se pueden observar entre el intérprete interactivo y el pry es que el irb va ejecutando el programa en la consola de forma interactiva. Mientras que con pry, cuando en la ejecución del programa lee la línea binding.pry (siempre y cuando tenga el "require 'pry'") da el control a la consola permitiendodepurar en tiempo de ejecucion el programa, añadiendo nuevos métodos, haciendo asignaciones, etc. Si la línea binding no se llegara a ejecutar, el programa se ejecutaría de forma normal.
+Las diferencias que se pueden observar entre el intérprete interactivo 
+y el pry es que el irb va ejecutando el programa en la consola 
+de forma interactiva. Mientras que con pry, cuando en la ejecución
+ del programa lee la línea binding.pry (siempre y cuando tenga 
+el "require 'pry'") da el control a la consola permitiendo depurar 
+en tiempo de ejecucion el programa, añadiendo nuevos métodos, 
+haciendo asignaciones, etc. Si la línea binding no se llegara 
+a ejecutar, el programa se ejecutaría de forma normal.
+
+34/
+La diferencia entre "\t\n" y '\t\n' radica en que el "\t\n" arrojará 
+por pantalla un tabulador y un retorno de carro si embargo el '\t\n' 
+escribirá por pantalla la cadena: \t\n
+
+[1] pry(main)> puts '\t\n'
+\t\n
+=> nil
+[2] pry(main)> puts "\t\n"
+	
+=> nil
+[3] pry(main)>
+
+35/
+El %q es una herramienta que nos permite no interpolar las cadenas, es decir
+que las escribe de forma literal. En el %q{hello world\n} ruby arrojará en la 
+salida "hello world\n" escribiendo los caracteres de forma literal.
+Para la siguiente  prueba el resultado por pantalla será "'a' 'b' 'c'"
+
+36/
+En este caso (%Q) devuelve una cadena e interpola, por lo que la salida será "hello world"
+pero hará un retorno de carro y por otra parte devolverá ""a" "b" "c""
+
+37/
+"--4--\n--2--\n"
+
+38/
+"--\#{a}--\n--\#{b}--\n"
+
+39/
+s[0,2] : "he"
+s[-1,1] : "o"
+s[0,10] : "hello"
+
+40/
+"hello world"
+
+41/
+"..."
+
+42/
+"2 2 2 "
+
+43/
+El array ["this", "is", "a", "test"]
+this
+is 
+a 
+test
+
+44/
+muestra el array ["\t" "\n"]
+\t
+\n
+no interpolado
+
+45/
+muestra el array interpolado por lo que en la salia no aparece ningún caracter
+puesto que primero hace un tabulador y despues un retorno de carro
+
+46/
+Un array de objetos nulos : [nil, nil, nil]
+
+47/
+Contiene un array que tiene tres ceros : [0, 0, 0]
+
+48/
+un array:
+[[1, 2], [3, 4]]
+
+49/
+[0, 2, 4]
+
+50/
+a[1,1] : ["b"]
+a[-2,2] : ["d", "e"]
+a[0..2] : ["a", "b", "c"]
+a[0...1] : ["a"]
+[-2..-1] : ["d", "e"]
+
+51/
+[19] pry(main)> a
+=> ["a", "b", "c", "d", "e"]
+[20] pry(main)> a
+=> ["a", "b", "c", "d", "e"]
+[21] pry(main)> a[0,2] = %w{A B}
+=> ["A", "B"]
+[22] pry(main)> a
+=> ["A", "B", "c", "d", "e"]
+[23] pry(main)> a[2..5] = %w{´C D E}
+=> ["´C", "D", "E"]
+[24] pry(main)> a
+=> ["A", "B", "´C", "D", "E"]
+[26] pry(main)> a[0,0] = [1,2,3]
+=> [1, 2, 3]
+[27] pry(main)> a
+=> [1, 2, 3, "A", "B", "´C", "D", "E"]
+[28] pry(main)> a[0,2] = []
+=> []
+[29] pry(main)> a
+=> [3, "A", "B", "´C", "D", "E"]
+[30] pry(main)> a[-1,1] = [ 'Z' ]
+=> ["Z"]
+[31] pry(main)> a
+=> [3, "A", "B", "´C", "D", "Z"]
+[32] pry(main)> a[-2,2] = nil
+=> nil
+[33] pry(main)> a
+=> [3, "A", "B", "´C", nil]
+
+52/
+[35] pry(main)> a = (1...4).to_a
+=> [1, 2, 3]
+[36] pry(main)> a=a+[4,5]
+=> [1, 2, 3, 4, 5]
+[37] pry(main)> a += [[6,7,8]]
+=> [1, 2, 3, 4, 5, [6, 7, 8]]
+[38] pry(main)> a = a +9
+TypeError: no implicit conversion of Fixnum into Array
+from (pry):30:in `+'
+
+Se produce un error porque no se puede sumar un numero a un array
+
+53/
+[41] pry(main)> x= %w{a b c b a}
+=> ["a", "b", "c", "b", "a"]
+[42] pry(main)> x= x - %w{b c d}
+=> ["a", "a"]
+
+54/
+[0, 0, 0, 0, 0, 0, 0, 0]
+
+55/
+[46] pry(main)> a= []
+=> []
+[47] pry(main)> a << 1
+=> [1]
+[48] pry(main)> a << 2 << 3
+=> [1, 2, 3]
+[49] pry(main)> a << [4,5,6]
+=> [1, 2, 3, [4, 5, 6]]
+[50] pry(main)> a.concat [7,8]
+=> [1, 2, 3, [4, 5, 6], 7, 8]
+
+56/
+[52] pry(main)> a=[1,1,2,2,3,3,4]
+=> [1, 1, 2, 2, 3, 3, 4]
+[53] pry(main)> b=[5,5,4,4,3,3,2]
+=> [5, 5, 4, 4, 3, 3, 2]
+[54] pry(main)> c = a|b
+=> [1, 2, 3, 4, 5]
+[55] pry(main)> d =b|a
+=> [5, 4, 3, 2, 1]
+[56] pry(main)> e = a & b
+=> [2, 3, 4]
+[57] pry(main)> f = b & a
+=> [4, 3, 2]
+
+57/
+[60] pry(main)> a = 1..10
+=> 1..10
+[61] pry(main)>
+[62] pry(main)> a.class
+=> Range
+[63] pry(main)> a.to_a
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[64] pry(main)> b = 1...10
+=> 1...10
+[65] pry(main)> b.to_a
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+[66] pry(main)> b.include? 10
+=> false
+[67] pry(main)> b.include? 8
+=> true
+[68] pry(main)> b.step(2) {|x| print "#{x} "}
+1 3 5 7 9 => 1...10
+[69] pry(main)> 1..3.to_a
+NoMethodError: undefined method `to_a' for 3:Fixnum
+from (pry):55:in `__pry__'
+
+58/
+[79] pry(main)> r = 0...100
+=> 0...100
+[80] pry(main)> r.member? 50
+=> true
+[81] pry(main)> r.include? 99.9
+=> true
+[82] pry(main)> r.member? 99.9
+=> true
+
+59/
+[89] pry(main)> true.class
+=> TrueClass
+[90] pry(main)> false.class
+=> FalseClass
+[91] pry(main)> puts "hello" if 0
+hello
+=> nil
+[92] pry(main)> puts "hello" if nil
+=> nil
+[93] pry(main)> puts "hello" if ""
+(pry):77: warning: string literal in condition
+hello
+=> nil
+
+60/
+[95] pry(main)> x= :sym
+=> :sym
+[96] pry(main)> x.class
+=> Symbol
+[97] pry(main)> x=='sym'
+=> false
+[98] pry(main)> x== :sym
+=> true
+[99] pry(main)> z = :'a long symbol'
+=> :"a long symbol"
+[100] pry(main)> z.class
+=> Symbol
+[101] pry(main)> x == 'sym'.to_sym
+=> true
+[102] pry(main)> x.to_s == 'sym'
+=> true
+
+61/
+[104] pry(main)> s= "Ruby"
+=> "Ruby"
+[105] pry(main)> t=s
+=> "Ruby"
+[106] pry(main)> t[-1] = ""
+=> ""
+[107] pry(main)> print s
+Rub=> nil
+[108] pry(main)> t = "Java"
+=> "Java"
+[109] pry(main)> print s, t
+RubJava=> nil
+
+62/
+"3 rubies"
+
+63/
+[114] pry(main)> x,y=4,5
+=> [4, 5]
+[115] pry(main)> z = x > y ? x : y
+=> 5
+[116] pry(main)> x,y,z=[1,2,3]
+=> [1, 2, 3]
+
+64/
+[118] pry(main)> x = { :a => 1, :b => 2 }
+=> {:a=>1, :b=>2}
+[119] pry(main)> x.keys
+=> [:a, :b]
+[120] pry(main)> x.values
+=> [1, 2]
+[121] pry(main)> x[:c] = 3
+=> 3
+[122] pry(main)> x
+=> {:a=>1, :b=>2, :c=>3}
+[123] pry(main)> x.delete('a')
+=> nil
+[124] pry(main)> x
+=> {:a=>1, :b=>2, :c=>3}
+[125] pry(main)> x.delete(:a)
+=> 1
+[126] pry(main)> x
+=> {:b=>2, :c=>3}
+[127] pry(main)> x = { :a => 1, :b=>2, :c=>4}
+=> {:a=>1, :b=>2, :c=>4}
+[128] pry(main)> x.delete_if { |k,v| v % 2 == 0 }
+=> {:a=>1}
+[129] pry(main)> x
+=> {:a=>1}
+
+65/
+
+Con counts = Hash.new(0) creamos una especie de array pero que puede contener 
+ademas de valores, punteros hacia esos valores.Pero en el segundo caso,
+al igual que en el primero se crea un vector vacio haciendo en este caso lo mismo.
+
+66/
+La expresión regular retorna:
+=> ["hello", "world", "hello", "LPP"]
+
 
